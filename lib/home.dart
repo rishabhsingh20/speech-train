@@ -8,7 +8,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Map data = {};
-  var a;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,11 +15,11 @@ class _HomeState extends State<Home> {
         title: Text(
           'Learn English',
           style: TextStyle(
-              color: Colors.red[200],
+              color: Color.fromARGB(255, 139, 7, 7),
               fontWeight: FontWeight.bold,
               letterSpacing: 2.0),
         ),
-        backgroundColor: Colors.yellow,
+        backgroundColor: Color.fromARGB(255, 103, 217, 179),
         centerTitle: true,
         elevation: 0,
       ),
@@ -30,88 +29,60 @@ class _HomeState extends State<Home> {
           top: false,
           right: true,
           child: Container(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 150, 10, 10),
-              child: Column(
-                children: <Widget>[
-                  Center(
-                    child: ElevatedButton.icon(
-                      icon: Icon(
-                        Icons.edit_location,
-                        color: Colors.red,
-                        size: 35,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const FirstRoute()),
-                        );
-                      },
-
-                      label: Text(
-                        'Words',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black),
-                      ),
-                      //   shape: new RoundedRectangleBorder(
-                      //       borderRadius: new BorderRadius.circular(45.0)),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 100),
+                Center(
+                  child: Text(
+                    'Choose if you want to practice words or sentances',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: 100),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FirstRoute()),
+                      );
+                    },
+                    child: Text(
+                      'Practice Words',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Colors.black),
                     ),
                   ),
-                  Center(
-                    child: ElevatedButton.icon(
-                      icon: Icon(
-                        Icons.edit_location,
-                        color: Colors.red,
-                        size: 35,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SecondRoute()),
-                        );
-                      },
-                      label: Text(
-                        'Sentences',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black),
-                      ),
-                      // shape: new RoundedRectangleBorder(
-                      //     borderRadius: new BorderRadius.circular(45.0)),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(158, 26, 233, 222), // background
+                      onPrimary: Colors.yellow, // foreground
                     ),
-                  ),
-                  Center(
-                    child: ElevatedButton.icon(
-                      icon: Icon(
-                        Icons.edit_location,
-                        color: Colors.red,
-                        size: 35,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyStatefulWidget()),
-                        );
-                      },
-                      label: Text(
-                        'sign-in/sign-up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black),
-                      ),
-                      // shape: new RoundedRectangleBorder(
-                      //     borderRadius: new BorderRadius.circular(45.0)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SecondRoute()),
+                      );
+                    },
+                    child: Text(
+                      'Practice Sentences',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Colors.black),
                     ),
+                    // shape: new RoundedRectangleBorder(
+                    //     borderRadius: new BorderRadius.circular(45.0)),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )),
     );
@@ -216,98 +187,5 @@ class SecondRoute extends StatelessWidget {
                 ],
               )),
         ));
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => Sign();
-}
-
-class Sign extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Learn English',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 30),
-            )),
-        Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Sign in',
-              style: TextStyle(fontSize: 20),
-            )),
-        Container(
-          padding: const EdgeInsets.all(10),
-          child: TextField(
-            controller: nameController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'User Name',
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: TextField(
-            obscureText: true,
-            controller: passwordController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Password',
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            //forgot password screen
-          },
-          child: const Text(
-            'Forgot Password',
-          ),
-        ),
-        Container(
-            height: 50,
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            child: ElevatedButton(
-              child: const Text('Login'),
-              onPressed: () {
-                print(nameController.text);
-                print(passwordController.text);
-                Navigator.pop(context);
-              },
-            )),
-        Row(
-          children: <Widget>[
-            const Text('Does not have account?'),
-            TextButton(
-              child: const Text(
-                'Sign in',
-                style: TextStyle(fontSize: 20),
-              ),
-              onPressed: () {
-                //signup screen
-              },
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-      ],
-    ));
   }
 }
