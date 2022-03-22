@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screen/sentance.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -105,6 +106,11 @@ class FirstRoute extends StatelessWidget {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Sentance()),
+                      );
                       // Navigator.pop(context);
                       // Navigate back to first route when tapped.
                     },
