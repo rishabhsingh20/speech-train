@@ -26,7 +26,7 @@ class SoundRecorder {
 
   Future _record() async {
     if (!isinitialized) return;
-    await _recorder!.startRecorder(toFile: 'abc.mp3', codec: Codec.mp3);
+    await _recorder!.startRecorder(toFile: 'abc.aac');
   }
 
   Future _stop() async {
