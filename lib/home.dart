@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/levels.dart';
 import 'package:flutter_application_1/screen/sentance.dart';
 
 class Home extends StatefulWidget {
@@ -47,7 +48,9 @@ class _HomeState extends State<Home> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const FirstRoute()),
+                            builder: (context) => const GameMode(
+                                  mode: "Word",
+                                )),
                       );
                     },
                     child: Text(
@@ -69,7 +72,9 @@ class _HomeState extends State<Home> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SecondRoute()),
+                            builder: (context) => const GameMode(
+                                  mode: "Sentance",
+                                )),
                       );
                     },
                     child: Text(
@@ -101,7 +106,7 @@ class FirstRoute extends StatelessWidget {
         ),
         body: Center(
           child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Column(
                 children: <Widget>[
                   ElevatedButton(
@@ -148,48 +153,31 @@ class FirstRoute extends StatelessWidget {
   }
 }
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
-
+class GameMode extends StatelessWidget {
+  const GameMode({Key? key, required this.mode}) : super(key: key);
+  final String mode;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Sentence Arena'),
+          title: Text('Welcome to $mode Arena'),
         ),
         body: Center(
           child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
-              child: Column(
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigator.pop(context);
-                      // Navigate back to first route when tapped.
-                    },
-                    child: const Text('Level 1'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigator.pop(context);
-                      // Navigate back to first route when tapped.
-                    },
-                    child: const Text('Level 2'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigator.pop(context);
-                      // Navigate back to first route when tapped.
-                    },
-                    child: const Text('Level 3'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // Navigate back to first route when tapped.
-                    },
-                    child: const Text('Let\'s Go Home!'),
-                  ),
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: const <Widget>[
+                  Level(level: 1),
+                  Level(level: 2),
+                  Level(level: 3),
+                  Level(level: 4),
+                  Level(level: 5),
+                  Level(level: 6),
                 ],
               )),
         ));
