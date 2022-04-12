@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/recorder.dart';
 import 'package:record/record.dart';
+import 'package:flutter_application_1/screen/analysis.dart';
 
 class Sentance extends StatefulWidget {
   const Sentance({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class Interface extends State<Sentance> {
                 const SizedBox(height: 100),
                 Center(
                   child: Text(
-                    'Random sentance',
+                    'House',
                     style: TextStyle(fontSize: 25, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
@@ -86,7 +87,11 @@ class Interface extends State<Sentance> {
                       onPrimary: Colors.yellow, // foreground
                     ),
                     onPressed: () {
-                      //navigator.push()
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AnalysisState()),
+                      );
                     },
                     child: Text(
                       'Submit',
