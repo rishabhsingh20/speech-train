@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class AnalysisState extends StatefulWidget {
   const AnalysisState({Key? key}) : super(key: key);
@@ -7,17 +8,25 @@ class AnalysisState extends StatefulWidget {
   State<AnalysisState> createState() => Analysis();
 }
 
+bool animated = false;
+
 class Analysis extends State<AnalysisState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Pronunciation Analysis',
-            style: TextStyle(
-                color: Color.fromARGB(255, 139, 7, 7),
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2.0),
+          title: AnimatedTextKit(
+            animatedTexts: [
+              TyperAnimatedText(
+                'Pronunciation Analysis',
+                textStyle: const TextStyle(
+                  color: Color.fromARGB(255, 139, 7, 7),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0,
+                ),
+              ),
+            ],
+            totalRepeatCount: 1,
           ),
           backgroundColor: Color.fromARGB(255, 103, 217, 179),
           centerTitle: true,

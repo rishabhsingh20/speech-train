@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/recorder.dart';
 import 'package:record/record.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_application_1/screen/analysis.dart';
 
 class Sentance extends StatefulWidget {
@@ -32,12 +33,17 @@ class Interface extends State<Sentance> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Learn English',
-          style: TextStyle(
-              color: Color.fromARGB(255, 139, 7, 7),
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2.0),
+        title: AnimatedTextKit(
+          animatedTexts: [
+            TyperAnimatedText(
+              'Learn English',
+              textStyle: const TextStyle(
+                  color: Color.fromARGB(255, 139, 7, 7),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0),
+            ),
+          ],
+          totalRepeatCount: 1,
         ),
         backgroundColor: Color.fromARGB(255, 103, 217, 179),
         centerTitle: true,
